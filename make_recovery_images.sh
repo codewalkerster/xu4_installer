@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo umount /media/codewalker/fat32
+sudo umount /media/${USER}/fat32
 sudo losetup -d /dev/loop0
 
 # make image of loop devices filled zero.
@@ -32,46 +32,46 @@ echo "popd"
 popd
 
 # mount user fat partition.
-echo "sudo mount /dev/loop0p1 /media/codewalker/fat32/"
-sudo mount /dev/loop0p1 /media/codewalker/fat32/
+echo "sudo mount /dev/loop0p1 /media/${USER}/fat32/"
+sudo mount /dev/loop0p1 /media/${USER}/fat32/
 
 # copy android images and u-boot binaries.
-echo "sudo cp update/* /media/codewalker/fat32/"
-sudo cp update/* /media/codewalker/fat32/
+echo "sudo cp update/* /media/${USER}/fat32/"
+sudo cp update/* /media/${USER}/fat32/
 
 # eMMC
 # copy script for eMMC.
-echo "sudo cp emmc/boot.ini /media/codewalker/fat32/"
-sudo cp emmc/boot.ini /media/codewalker/fat32/
-echo "sudo umount /media/codewalker/fat32"
+echo "sudo cp emmc/boot.ini /media/${USER}/fat32/"
+sudo cp emmc/boot.ini /media/${USER}/fat32/
+echo "sudo umount /media/${USER}/fat32"
 sleep 3
-sudo umount /media/codewalker/fat32
+sudo umount /media/${USER}/fat32
 # dump binary
 echo "sudo dd if=/dev/loop0 of=emmc/self-emmc.img count=1024000"
 sudo dd if=/dev/loop0 of=emmc/self-emmc.img count=1024000
 
 # SD
 # copy script for SD.
-echo "sudo mount /dev/loop0p1 /media/codewalker/fat32/"
-sudo mount /dev/loop0p1 /media/codewalker/fat32/
-echo "sudo cp sd/boot.ini /media/codewalker/fat32/"
-sudo cp sd/boot.ini /media/codewalker/fat32/
-echo "sudo umount /media/codewalker/fat32"
+echo "sudo mount /dev/loop0p1 /media/${USER}/fat32/"
+sudo mount /dev/loop0p1 /media/${USER}/fat32/
+echo "sudo cp sd/boot.ini /media/${USER}/fat32/"
+sudo cp sd/boot.ini /media/${USER}/fat32/
+echo "sudo umount /media/${USER}/fat32"
 sleep 3
-sudo umount /media/codewalker/fat32
+sudo umount /media/${USER}/fat32
 # dump binary
 echo "sudo dd if=/dev/loop0 of=sd/self-sd.img count=1024000"
 sudo dd if=/dev/loop0 of=sd/self-sd.img count=1024000
 
 # SD to eMMC
 # copy script for SD to eMMC.
-echo "sudo mount /dev/loop0p1 /media/codewalker/fat32/"
-sudo mount /dev/loop0p1 /media/codewalker/fat32/
-echo "sudo cp sd2emmc/boot.ini /media/codewalker/fat32/"
-sudo cp sd2emmc/boot.ini /media/codewalker/fat32/
-echo "sudo umount /media/codewalker/fat32"
+echo "sudo mount /dev/loop0p1 /media/${USER}/fat32/"
+sudo mount /dev/loop0p1 /media/${USER}/fat32/
+echo "sudo cp sd2emmc/boot.ini /media/${USER}/fat32/"
+sudo cp sd2emmc/boot.ini /media/${USER}/fat32/
+echo "sudo umount /media/${USER}/fat32"
 sleep 3
-sudo umount /media/codewalker/fat32
+sudo umount /media/${USER}/fat32
 # dump binary
 echo "sudo dd if=/dev/loop0 of=sd2emmc/sd2emmc.img count=1024000"
 sudo dd if=/dev/loop0 of=sd2emmc/sd2emmc.img count=1024000
