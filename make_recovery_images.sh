@@ -16,8 +16,8 @@ echo "sudo parted /dev/loop0 mktable msdos"
 sudo parted /dev/loop0 mktable msdos
 
 # make file-system.
-echo "sudo parted /dev/loop0 mkpart primary fat32 105 525"
-sudo parted /dev/loop0 mkpart primary fat32 90 525
+echo "sudo parted /dev/loop0 mkpart primary fat32 90 524"
+sudo parted /dev/loop0 mkpart primary fat32 90 524
 
 # format file-system.
 echo "sudo mkfs.vfat -F 32 /dev/loop0p1"
